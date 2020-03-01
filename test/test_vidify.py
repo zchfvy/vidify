@@ -1,7 +1,7 @@
 import markdown
 import unittest
 
-import vidify
+import markdown_vidify
 
 class VidifyTestCase(unittest.TestCase):
     def setUp(self):
@@ -12,7 +12,7 @@ class VidifyTestCase(unittest.TestCase):
 
     def test_empty_input(self):
         inString = ""
-        outString = markdown.markdown(inString, extensions = [vidify.VidifyExtension()], output_format="html5")
+        outString = markdown.markdown(inString, extensions = [markdown_vidify.VidifyExtension()], output_format="html5")
         self.assertEqual(inString, outString)
 
     def test_no_images(self):
@@ -27,9 +27,9 @@ It contains multiple paragraphs and some [links](https://example.com)
 
 # This is a heading
 
-Nothing should change when using vidify."""
+Nothing should change when using markdown_vidify."""
         expectedString = markdown.markdown(inString)
-        outString = markdown.markdown(inString, extensions = [vidify.VidifyExtension()], output_format="html5")
+        outString = markdown.markdown(inString, extensions = [markdown_vidify.VidifyExtension()], output_format="html5")
         self.assertEqual(expectedString, outString)
 
     def test_no_videos(self):
@@ -46,9 +46,9 @@ It contains multiple paragraphs and some [links](https://example.com)
 
 [But this time there's an image too](/content/image.png "It even has a title!")
 
-Nothing should change when using vidify."""
+Nothing should change when using markdown_vidify."""
         expectedString = markdown.markdown(inString)
-        outString = markdown.markdown(inString, extensions = [vidify.VidifyExtension()], output_format="html5")
+        outString = markdown.markdown(inString, extensions = [markdown_vidify.VidifyExtension()], output_format="html5")
         self.assertEqual(expectedString, outString)
         
     def test_simple_video(self):
@@ -56,7 +56,7 @@ Nothing should change when using vidify."""
 ![videos do not have alt text](/content/video.webm "Videos can have titles")"""
         expectedString = """\
 <p><video src="/content/video.webm" title="Videos can have titles"></video></p>"""
-        outString = markdown.markdown(inString, extensions = [vidify.VidifyExtension()], output_format="html5")
+        outString = markdown.markdown(inString, extensions = [markdown_vidify.VidifyExtension()], output_format="html5")
         self.assertEqual(expectedString, outString)
         
     def test_advanced_video(self):
@@ -64,7 +64,7 @@ Nothing should change when using vidify."""
 ![videos do not have alt text](/content/video.webm "Videos can have titles")"""
         expectedString = """\
 <p><video autoplay controls loop muted src="/content/video.webm" title="Videos can have titles"></video></p>"""
-        outString = markdown.markdown(inString, extensions = [vidify.VidifyExtension(
+        outString = markdown.markdown(inString, extensions = [markdown_vidify.VidifyExtension(
             autoplay=True,
             controls=True,
             loop=True,

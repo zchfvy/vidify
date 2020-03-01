@@ -12,12 +12,12 @@ class VidifyTreeprocessor(Treeprocessor):
         self.muted = muted
 
     def run(self, root):
-        for img in root.findall("./*/img"):
+        for img in root.findall(".//img"):
             for extension in self.extensions:
                 if img.attrib.get("src", "").lower().endswith(extension):
                     break
             else:
-                return  # not a video format
+                continue  # not a video format
 
             img.tag = "video"
             if "alt" in img.attrib.keys():

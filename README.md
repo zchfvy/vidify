@@ -10,7 +10,7 @@ Vidifiy works by detecting `<img>` tags pointing at a file with an extension of
 
 Installing
 ---
-Hopefully you can just do
+Simply install from PyPi:
 ```
 pip install markdown-vidify
 ```
@@ -21,12 +21,12 @@ Simply import the package and then pass it to the extensions parameter of
 markdown!
 ```python
 import markdown
-import vidify
+import markdown_vidify
 
 # ...
 
 ouptut = markdown.markdown(input, extensions=[
-    vidify.VidifyExtension(
+    markdown_vidify.VidifyExtension(
         autoplay=False,
         controls=True,
         loop=False,
