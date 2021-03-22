@@ -42,7 +42,7 @@ All default to false:
 * autoplay - Autoplay the video once page is loaded
 * controls - Display player controls below the video
 * loop - Loop the video
-* mute - Video is muted by default
+* muted - Video is muted by default
 
 Extra Hints!
 --------------------------------------------------------------------------------
